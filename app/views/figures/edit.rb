@@ -1,38 +1,21 @@
-<h2>Edit Historical Figure: <%= @figure.name %></h2>
+<h1>Update Figure Below</h1>
+
 
    <form action="/figures/<%= @figure.id %>" method="POST">
-    <input id="hidden" type="hidden" name="_method" value="PATCH">
-
-     <label for="figure_name">Name: </label>
-    <input id="figure_name" type="text" name="figure[name]" value="<%= @figure.name %>">
-
-
-     <h3>Titles</h3>
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    Edits for Figure <input type=text name="figure[name]" id="figure_name" value="<%= @figure.name %>"><br>
+    <p>Select an existing title</p>
+    <h3>Existing Titles</h3>
     <% @titles.each do |title| %>
-      <input type="checkbox" name="figure[title_ids][]"  id="<%= title.id %>" value="<%= title.id %>" <%='checked' if @figure.titles.include?(title)%>><%= title.name %></input><br>
+      <input type="checkbox" name="figure[title_ids]" value="<%= title.id %>" id="<%= title.id %>" <%='checked' if @figure.titles.include?(title) %>><%= title.name %><br>
     <% end %>
-
-     <h3>Create New Title:</h3>
-    <label for="new_title">
-    <input id="new_title" type="text" name="title[name]">
-
-
-     <h3>Landmarks</h3>
-    <% @landmarks.each do |landmark| %>
-      <input type="checkbox" name="figure[landmark_ids][]"  id="<%= landmark.id %>" value="<%= landmark.id %>" <%='checked' if @figure.landmarks.include?(landmark)%>><%= landmark.name %></input><br>
-    <% end %>
-
-     <h3>Create New Landmark:</h3>
-    <label for="new_landmark">Name: </label>
-    <input id="new_landmark" type="text" name="landmark[name]">
-    <label for="landmark_year">Year: </label>
-    <input id="landmark_year" type="text" name="landmark[year_completed]">
-
-
-     <input type="submit" value="Edit Figure">
+    <br>
+    <h3>Add A New Landmark:</h3>
+  <label>Name: </label>
+    <input type="text" name="landmark[name]" id="new_landmark" placeholder="Landmark's name.."></input>
+  <br><br>
+    <input type="submit" value="Edit Figure">
   </form>
-
- <br><br>
 
  <a class="button" href="/figures">All Figures</a>
 <br>
