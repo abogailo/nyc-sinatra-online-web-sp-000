@@ -19,13 +19,13 @@ class FiguresController < ApplicationController
     @titles = @figure.titles
 
      erb :"/figures/show"
-  end 
+  end
 
    post '/figures' do
     @figure = Figure.find_or_create_by(name: params[:figure][:name])
 
      title_ids = params[:figure][:title_ids]
-    if title_ids != nil && !title_ids.empty?    
+    if title_ids != nil && !title_ids.empty?
       title_ids.each do |title_id|
         @figure.titles << Title.find(title_id)
       end
@@ -36,7 +36,7 @@ class FiguresController < ApplicationController
     end
 
      landmark_ids = params[:figure][:landmark_ids]
-    if landmark_ids!= nil && !landmark_ids.empty?       
+    if landmark_ids!= nil && !landmark_ids.empty?
       landmark_ids.each do |landmark_id|
         @figure.landmarks << Landmark.find(landmark_id)
       end
@@ -68,7 +68,7 @@ class FiguresController < ApplicationController
      @figure.update(name: params[:figure][:name])
 
      title_ids = params[:figure][:title_ids]
-    if title_ids != nil && !title_ids.empty?    
+    if title_ids != nil && !title_ids.empty?
       title_ids.each do |title_id|
         @figure.titles << Title.find(title_id)
       end
@@ -79,7 +79,7 @@ class FiguresController < ApplicationController
     end
 
      landmark_ids = params[:figure][:landmark_ids]
-    if landmark_ids!= nil && !landmark_ids.empty?       
+    if landmark_ids!= nil && !landmark_ids.empty?
       landmark_ids.each do |landmark_id|
         @figure.landmarks << Landmark.find(landmark_id)
       end
